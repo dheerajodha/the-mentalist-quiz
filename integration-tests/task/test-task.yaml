@@ -7,14 +7,45 @@ spec:
     - name: checkout-source
       image: alpine/git
       script: |
-        git clone https://github.com/dheerajodha/the-mentalist-quiz.git /workspace
+        git clone -b ui-tests https://github.com/dheerajodha/the-mentalist-quiz.git /workspace
     - name: list-files
       image: alpine
       script: |
         ls -l /workspace
-    - name: run-tests
+    - name: run-unit-tests
       image: golang:1.21
       workingDir: /workspace
       script: |
         go test ./... > tests.log
         cat tests.log
+    - name: start-application
+      image: golang:1.21
+      workingDir: /workspace
+      script: |
+        nohup go run . &
+        # Wait for the application to start
+        timeout=60
+        interval=2
+        elapsed=0
+        while ! curl -sSf http://localhost:8080 > /dev/null; do
+          if [ $elapsed -ge $timeout ]; then
+            echo "Application failed to start within $timeout seconds."
+            exit 1
+          fi
+          echo "Waiting for application to start..."
+          sleep $interval
+          elapsed=$((elapsed + interval))
+        done
+        echo "Application is running on localhost:8080"
+    - name: run-ui-tests
+      image: cypress/included:13.13.0
+      workingDir: /workspace
+      script: |
+        cypress run --spec cypress/e2e/spec.cy.js
+
+#npm init -y
+#npm install cypress --save-dev
+#nvm use v14.15.3
+#npx cypress open
+#or
+#npx cypress run --spec cypress/e2e/spec.cy.js
