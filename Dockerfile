@@ -1,5 +1,5 @@
 # Start from the official Golang image
-FROM quay.io/djodha/golang:1.23.1
+FROM quay.io/djodha/golang:1.23.0-alpine
 
 # Set the Current Working Directory inside the container
 WORKDIR /app
