@@ -1,2 +1,2 @@
 Namaste!
-Hwo's it going?
+How's it going?
