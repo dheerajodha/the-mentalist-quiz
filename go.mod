@@ -1,8 +1,8 @@
 module the-mentalist-quiz
 
-go 1.21.0
+go 1.23
 
-toolchain go1.22.9
+toolchain go1.23.8
 
 require (
 	github.com/gin-gonic/gin v1.10.0
@@ -15,7 +15,7 @@ require (
 	github.com/cloudwego/base64x v0.1.5 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/gabriel-vasile/mimetype v1.4.4 // indirect
-	github.com/gin-contrib/sse v0.1.0 // indirect
+	github.com/gin-contrib/sse v1.1.0 // indirect
 	github.com/go-playground/locales v0.14.1 // indirect
 	github.com/go-playground/universal-translator v0.18.1 // indirect
 	github.com/go-playground/validator/v10 v10.22.0 // indirect
