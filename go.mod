@@ -2,7 +2,7 @@ module the-mentalist-quiz
 
 go 1.21.0
 
-toolchain go1.22.9
+toolchain go1.24.4
 
 require (
 	github.com/gin-gonic/gin v1.10.0
