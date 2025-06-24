@@ -26,8 +26,27 @@ sources:
     policy:
       - oci::quay.io/enterprise-contract/ec-release-policy:konflux
       - github.com/dheerajodha/the-mentalist-quiz.git//ec-policy/rules
+    ruleData:
+        allowed_registry_prefixes:
+          - quay.io/djodha/golang
 configuration:
   include:
     - "@redhat"
     - verify_base_go_version
     - cve
+  exclude:
+    - labels.required_labels:release
+    - labels.required_labels:distribution-scope
+    - labels.required_labels:url
+    - 'tasks.required_tasks_found:prefetch-dependencies'
+    - 'test.required_tests_passed:sast-snyk-check'
+    - 'test.no_skipped_tests:sast-snyk-check'
+    - 'test.required_tests_passed:sast-snyk-check-oci-ta'
+    - 'test.required_tests_passed:sast-shell-check'
+    - tasks.required_tasks_found:sast-shell-check-oci-ta
+    - 'test.no_skipped_tests:sast-snyk-check-oci-ta'
+    - hermetic_build_task
+    - 'tasks.required_tasks_found:source-build'
+    - 'tasks.required_tasks_found:fbc-target-index-pruning-check'
+    - 'test.no_failed_tests:ecosystem-cert-preflight-checks'
+    - tasks.required_tasks_found:rpms-signature-scan

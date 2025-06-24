@@ -13,6 +13,16 @@ RUN go mod download
 # Copy the source code into the container
 COPY . .
 
+# It is mandatory to set these labels
+LABEL name="the-mentalist-quiz"
+LABEL com.redhat.component="konflux-the-mentalist-quiz"
+LABEL description="Konflux The Mentalist"
+LABEL io.k8s.description="Konflux The Mentalist"
+LABEL io.k8s.display-name="The Mentalist Quiz"
+LABEL summary="The Mentalist Quiz roject to explore the power of Konflux"
+LABEL io.openshift.tags="konflux"
+LABEL vendor="Red Hat, Inc"
+
 # Build the Go app
 RUN go build -o main .
 
