@@ -26,7 +26,7 @@ func quizHandler(c *gin.Context) {
 	case "first-ques":
 		answer = "The CBI stands for California Bureau of Investigation."
 	case "second-ques":
-		answer = "Patrick Jane has a keen sense of observation and deduction."
+		answer = "Patrick Jane has a keen sense of pranks."
 	default:
 		answer = "Invalid question number."
 	}

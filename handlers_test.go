@@ -16,7 +16,7 @@ func TestQuizHandler(t *testing.T) {
 		expected string
 	}{
 		{"first-ques", "The CBI stands for California Bureau of Investigation."},
-		{"second-ques", "Patrick Jane has a keen sense of observation and deduction."},
+		{"second-ques", "Patrick Jane has a keen sense of pranks."},
 		{"1", "Invalid question number."},
 	}
 
